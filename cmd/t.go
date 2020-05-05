@@ -33,6 +33,10 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("t called")
+		cout := make(chan int)
+		go func() { cout <- 1 }()
+		c := <-cout
+		fmt.Println(c)
 	},
 }
 
